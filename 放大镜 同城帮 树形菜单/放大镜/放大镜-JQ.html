@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                position: relative;
+                margin: 20px;
+            }
+            .container .min-wrap {
+                border: 1px solid blue;
+                position: relative;
+                width: 350px;
+                height: 400px;
+            }
+            .container .min-wrap img {
+                width: 100%;
+            }
+            .container .min-wrap .slider {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 150px;
+                height: 150px;
+                background-color: rgba(100, 100, 100, 0.3);
+                display: none;
+            }
+            .container .max-wrap {
+                position: absolute;
+                left: 350px;
+                top: 0;
+                width: 350px;
+                height: 400px;
+                border: 1px solid blue;
+                overflow: hidden;
+                display: none;
+            }
+            .container .max-wrap img {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="min-wrap">
+                <img src="imgs/min.jpg" alt="" />
+                <span class="slider"></span>
+            </div>
+            <div class="max-wrap">
+                <img src="imgs/max.jpg" alt="" />
+            </div>
+        </div>
+
+    </body>
+    <script src="js/jquery-2.2.3.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            // 获取元素
+            var container = $('.container');
+            var minWrap = $('.container .min-wrap');
+            var slider = $('.container .min-wrap .slider');
+            var maxWrap = $('.container .max-wrap');
+            var maxImg = maxWrap.children().eq(0); // eq()获取的是JQ元素，get()获取的是JS对象
+
+
+            $('.min-wrap').on('mousemove', function (e) {
+                showOrHide('block');
+
+                // 计算点
+                var point = {
+                    x: e.pageX - container.offset().left - slider.width() / 2,
+                    y: e.pageY - container.offset().top - slider.height() / 2
+                };
+                var maxPoint = {
+                    x: minWrap.width() - slider.width(),
+                    y: minWrap.height() - slider.height()
+                };
+
+                // 计算临界值
+                if (point.x <= 0) {
+                    point.x = 0;
+                } else if (point.x >= maxPoint.x) {
+                    point.x = maxPoint.x;
+                }
+                if (point.y <= 0) {
+                    point.y = 0;
+                } else if (point.y >= maxPoint.y) {
+                    point.y = maxPoint.y;
+                }
+
+                // 设置slider的位置
+                slider.css({
+                    left: point.x,
+                    top: point.y
+                });
+
+                // 计算比例
+                var scale = {
+                    x: point.x / maxPoint.x,
+                    y: point.y / maxPoint.y
+                };
+                // 调整maxImg的left和top值
+                maxImg.css({
+                    left: -scale.x * (maxImg.width() - maxWrap.width()),
+                    top: -scale.y * (maxImg.height() - maxWrap.height())
+                });
+
+            }).on('mouseout', function () {
+                showOrHide('none');
+            });
+
+            // 显示和隐藏的函数
+            function showOrHide(status) {
+                $('.container').find('.slider, .max-wrap').css({ display: status });
+            }
+
+        });
+
+
+
+
+
+    </script>
+</html>

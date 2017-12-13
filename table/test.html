@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">  
+<HTML>  
+ <HEAD>  
+  <TITLE> New Document </TITLE>  
+  <META NAME="Generator" CONTENT="EditPlus">  
+  <META NAME="Author" CONTENT="">  
+  <META NAME="Keywords" CONTENT="">  
+  <META NAME="Description" CONTENT="">  
+  <style type="text/css" media="screen">
+    #Table1 tr{
+      
+    }
+  </style>
+ </HEAD>  
+ <BODY>  
+    <a href="javascript:PrintTableToExcel(Table1)" mce_href="javascript:PrintTableToExcel(Table1)">导出表格1到Excel</a>  
+    <br>  
+    <font color=red>表格1</font>  
+    <table width="400" border="1" id="Table1">  
+      <tr>  
+        <td align="center">第一行，第一列</td>  
+        <td align="center">第一行，第二列</td>  
+        <td align="center">第一行，第三列</td>  
+      </tr>  
+      <tr>  
+        <td align="center">第二行，第一列</td>  
+        <td align="center">第二行，第二列</td>  
+        <td align="center">第二行，第三列</td>  
+      </tr>  
+      <tr>  
+        <td align="center">第三行，第一列</td>  
+        <td align="center">第三行，第二列</td>  
+        <td align="center">第三行，第三列</td>  
+      </tr>  
+    </table>  
+  
+    <BR>  
+    <a href="javascript:PrintTableToExcelEx(Table2)" mce_href="javascript:PrintTableToExcelEx(Table2)">导出表格2到Excel</a><br> 表格2  
+    <table  border="1"  id="Table2">  
+        <tr>  
+            <th rowspan=2>所属地区</th>  
+            <th rowspan=2>客户名称</th>  
+            <th>总结算气量</th>  
+            <th>上期调整</th>  
+            <th>合格天然气</th>  
+            <th>不合格天然气</th>  
+            <th>超额外提气量</th>  
+            <th>结算金额</th>  
+            <th>差额</th>  
+            <th>发票金额</th>  
+        </tr>  
+        <tr>  
+            <th>气量</th>  
+            <th>价格</th>  
+            <th>金额</th>  
+            <th>应结算气量</th>  
+            <th>实际结算气量</th>  
+            <th>结算价格</th>  
+            <th>结算金额</th>  
+            <th>结算气量</th>  
+        </tr>  
+    </table>  
+ </BODY>  
+<SCRIPT LANGUAGE="JavaScript">  
+    // Str - TD的定义字符串  
+    // Prop - 属性值，可以是colspan、rowspan、border、width等数值型属性的名称  
+    // 返回值是属性的值  
+    // 例如TD的定义为<td width=100>xx</td>  
+    // 则getPropValue("td width=100>xx</td>", "width")返回100  
+    function getIntPropValue(Str, Prop)  
+    {  
+      var s = Str.toUpperCase(Str);  
+      var p = Prop.toUpperCase(Prop);  
+      var idx = s.indexOf(p);  
+      var PropValue = "";  
+      if (idx >= 0)  
+      {  
+        var x = Prop.length;  
+        while ((Str.charAt(idx + x) < "0") || (Str.charAt(idx + x) > "9"))  
+        {  
+          x++;  
+        }  
+        while ((Str.charAt(idx + x) >= "0") && (Str.charAt(idx + x) <= "9"))  
+        {  
+          PropValue = PropValue + Str.charAt(idx + x);  
+          x++;  
+        }  
+        return PropValue;  
+      }  
+      else  
+        return "";  
+    }  
+    // 增强型的导出HTML的Table到Excel  
+    function PrintTableToExcelEx(objTab)  
+    {  
+      try   
+      {  
+        var xls = new ActiveXObject( "Excel.Application" );  
+      }  
+      catch(e)   
+      {  
+        alert( "要打印该表，您必须安装Excel电子表格软件，同时浏览器须使用“ActiveX 控件”，您的浏览器须允许执行控件。 请点击【帮助】了解浏览器设置方法！");  
+        return false;  
+      }  
+      xls.visible = true;  
+      var xlBook  = xls.Workbooks.Add;  
+      var xlsheet = xlBook.Worksheets(1);  
+        
+      var CurX = 1;  
+      var CurY = 1;  
+      var ColSpanStart = 0;  
+      var ColSpanEnd   = 0;  
+      var RowSpanStart = 0;  
+      var RowSpanEnd   = 0;  
+      for (var i = 0; i < objTab.rows.length; i++)  
+      {  
+        for (var j = 0; j < objTab.rows[i].cells.length; j++)  
+        {  
+          s = objTab.rows[i].cells[j].outerHTML;  
+          s = s.toUpperCase(s);  
+          xlsheet.Cells(CurX, CurY).Value = objTab.rows[i].cells[j].innerHTML;  
+          //xlsheet.Cells(CurX, CurY).Interior.color = 0x00FF66;  
+          xlsheet.Cells(CurX, CurY).Borders.LineStyle = 1;  
+          SpanCol = getIntPropValue(s, "colspan");  
+          if (SpanCol != "")  
+          {  
+            ColSpanStart = CurY;  
+            ColSpanEnd   = parseInt(CurY) + parseInt(SpanCol) - 1;  
+            var R = xls.Range(xls.Cells(CurX, ColSpanStart), xls.Cells(CurX, ColSpanEnd));  
+            R.MergeCells = true;  
+            R.Borders.LineStyle = 1;  
+            CurY = ColSpanEnd+1;  
+          }  
+          SpanRow = getIntPropValue(s, "rowspan");  
+          if (SpanRow != "")  
+          {  
+            RowSpanStart = CurX;  
+            RowSpanEnd   = parseInt(CurX) + parseInt(SpanRow) - 1;  
+            var R = xls.Range(xls.Cells(RowSpanStart, CurY), xls.Cells(RowSpanEnd, CurY));  
+            R.MergeCells = true;  
+            R.Borders.LineStyle = 1;  
+          }  
+          if (SpanCol == "")CurY++;  
+        }  
+        ColSpanStart = 0;  
+        ColSpanEnd   = 0;  
+        CurX++;  
+        if (parseInt(CurX) > parseInt(RowSpanEnd))  
+        {  
+          RowSpanStart = 0;  
+          RowSpanEnd   = 0;  
+          CurY = 1;  
+        }  
+        else  
+        {  
+          CurY = 3;  
+        }  
+      }  
+      //xlsheet.Columns.AutoFit; //自动适应大小  
+      return;  
+    }  
+    //导出HTML的Table到Excel  
+    function PrintTableToExcel(objTab)  
+    {  
+      try   
+      {  
+        var xls = new ActiveXObject( "Excel.Application" );  
+      }  
+      catch(e)   
+      {  
+        alert( "要打印该表，您必须安装Excel电子表格软件，同时浏览器须使用“ActiveX 控件”，您的浏览器须允许执行控件。 请点击【帮助】了解浏览器设置方法！");  
+        return false;  
+      }  
+      xls.visible = true;  
+      var xlBook  = xls.Workbooks.Add;  
+      var xlsheet = xlBook.Worksheets(1);  
+      var x = 1;  
+      var y = 1;  
+      for (var i = 0; i < objTab.rows.length; i++)  
+      {  
+        y = 1;  
+        for (var j = 0; j < objTab.rows[i].cells.length; j++)  
+        {  
+          xlsheet.Cells(x, y).Value = objTab.rows[i].cells[j].innerHTML;  
+          xlsheet.Cells(x, y).Borders.LineStyle = 1;  
+          y++;  
+        }  
+        x++;  
+      }  
+      xlsheet.Columns.AutoFit; //自动适应大小  
+      return;  
+    }  
+</SCRIPT>  
+</HTML>  

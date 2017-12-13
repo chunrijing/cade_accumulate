@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .div1 {
+                width: 300px;
+                height: 300px;
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="div1">
+
+        </div>
+
+    </body>
+    <script src="jquery-2.2.3.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+        $(document).click(function () {
+
+            var div1 = $('.div1');
+
+
+            $('.div1').slideLeft(1000, function () {
+                console.log("动画完成");
+            });
+
+            function slideLeft(t, cb) {
+                // 处理可选参数
+                var time = t || 300;
+
+                // 获取最开始的宽度
+                var width = this.width();
+
+                // 每隔多少毫秒执行一次定时器
+                var ms = 5 * time / width;
+
+                // 开启定时器，实现动画效果
+                var timer = setInterval(function () {
+
+                    // 获取当前宽度
+                    var currentWidth = this.width();
+                    // 每次减少1像素
+                    currentWidth -= 5;
+                    // 如果宽度已经减到0，则停止定时器，并回调
+                    if (currentWidth == 0) {
+                        clearInterval(timer);
+                        // 先判断，是否存在，如果存在，才调用
+                        if (cb) { cb(); }
+                    }
+                    this.width(currentWidth);
+                }, ms);
+            };
+
+
+
+        });
+
+
+        $.fangda();
+        $(".div1").fangda();
+
+    </script>
+</html>

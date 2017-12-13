@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                width: 320px;
+                height: 400px;
+                overflow: hidden;
+                border: 1px solid blue;
+                position: relative;
+            }
+            .wrap {
+                position: absolute;
+                width: 9999px;
+                height: 400px;
+                left: 0;
+                top: 0;
+            }
+            img {
+                width: 320px;
+                height: 400px;
+                float: left;
+            }
+            .indicator {
+                width: 320px;
+                text-align: center;
+                border: 1px solid blue;
+            }
+            .indicator span {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: black;
+                margin: 0 10px;
+            }
+            .indicator span.current {
+                background-color: white;
+                border: 1px solid black;
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="wrap">
+                <img src="imgs/img_1.jpg" alt="">
+                <img src="imgs/img_2.jpg" alt="">
+                <img src="imgs/img_3.jpg" alt="">
+                <img src="imgs/img_4.jpg" alt="">
+                <img src="imgs/img_5.jpg" alt="">
+                <img src="imgs/img_6.jpg" alt="">
+            </div>
+        </div>
+        <div class="indicator">
+            <span class="current"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <button id="prev">上一个</button>
+        <button id="next">下一个</button>
+
+    </body>
+    <script src="jquery-2.2.3.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            // 获取img总个数
+            var count = $('.wrap img').length;
+            var width = $('.container').width();
+            // 记录当前下标
+            var index = 0;
+
+
+            var timer = null;
+            // 开始定时器，自动滚动动画
+            function startTimer() {
+                timer = setInterval(function () {
+                    index++;
+                    go();
+                }, 1000);
+            }
+            startTimer();
+
+            // 停止定时器
+            function endTimer() {
+                clearInterval(timer);
+                timer = null;
+            }
+
+            //
+            $('#prev').click(function () {
+                endTimer();
+                index--;
+                go();
+            });
+            $('#next').click(function () {
+                // 停止定时器
+                endTimer();
+                index++;
+                go();
+            });
+
+
+            // 移动
+            function go() {
+                if (index >= count) { index = 0; }
+                if (index < 0) { index = count - 1; }
+
+                // 使用animate方法设置css值，可以带有动画效果
+                $('.wrap').stop().animate({
+                    left: -index * width
+                }, function () {
+                    if (timer == null) {
+                        // 动画停止添加定时器
+                        startTimer();
+                    }
+                });
+
+                // 修改当前点的class值
+                $('.indicator span').removeClass('current').eq(index).addClass("current");
+            }
+
+
+
+        });
+
+    </script>
+</html>

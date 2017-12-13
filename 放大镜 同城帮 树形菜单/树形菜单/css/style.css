@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+.city-choose {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	width: 200px;
+	/*border: 1px solid blue;*/
+}
+.city-choose section {
+	/*padding: 5px 0;*/
+}
+.city-choose section h3 {
+	padding: 5px;
+	border-bottom: 1px solid gray;
+}
+.city-choose section h3:hover {
+	background-color: cyan;
+}
+.city-choose section ul {
+	list-style: none;
+	padding-left: 15px;
+	display: none;
+}
+.city-choose section li {
+	padding: 3px 5px;
+}
+.city-choose section li:nth-child(odd) {
+	background-color: #F5F5F5;
+}
+.city-choose section li:hover {
+	background-color: cyan;
+}

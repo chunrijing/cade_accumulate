@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .div1 {
+                width: 100px;
+                height: 100px;
+                background-color: cyan;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="div1">
+
+        </div>
+
+    </body>
+    <script src="jquery-2.2.3.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+        $(document).click(function () {
+
+            // 隐藏元素
+            // 第一个参数是 动画时间，单位是毫秒,
+            // 第二个参数是 回调函数，动画执行完成之后调用
+            // $('.div1').hide(300, function () {
+            //
+            //     // 显示元素
+            //     $('.div1').show(1000);
+            // });
+
+            // 切换显示和隐藏
+            $('.div1').toggle(500, function () {
+                console.log("动画完成");
+            });
+
+        });
+
+    </script>
+</html>

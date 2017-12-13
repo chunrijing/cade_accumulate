@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+	<body>
+		<div class="city-choose">
+			<!--<section>
+				<h3>北京</h3>
+				<ul>
+					<li>昌平</li>
+					<li>海淀</li>
+					<li>朝阳</li>
+					<li>石景山</li>
+				</ul>
+			</section>-->
+		</div>
+	</body>
+	<script src="js/jquery-2.2.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function () {
+			// 获取元素
+			var cityChoose = $('.city-choose');
+
+			// 获取json数据
+			$.get("http://127.0.0.1:63342/%E6%A0%91%E5%BD%A2%E8%8F%9C%E5%8D%95/data/city.json", function (data) {
+				updateUI(data.城市代码);
+			});
+
+			// 更新页面
+			function updateUI(data) {
+				$.each(data, function (index, value) {
+					// 获取省的名称
+					var cityName = value.省;
+					var section = $('<section>' +
+										'<h3>'+ cityName +'</h3>' +
+									'</section>');
+					var ul = $('<ul></ul>');
+					section.append(ul);
+					// ul.appendTo(section);
+
+					// 遍历所有市的名称
+					$.each(value.市, function (index, value) {
+						var li = $('<li>'+ value.市名 +'</li>').attr('cityCode', value.编码);
+						ul.append(li);
+					});
+
+					// 拼接到结构中
+					cityChoose.append(section);
+				});
+			}
+
+			// 绑定事件
+			cityChoose.on('click', 'h3, li', function(e) {
+				// 判断点击的是否是h3
+				if (e.target.nodeName == 'H3') {
+					// 把除了当前的ul以后的全部都隐藏起来
+					$('.city-choose section ul').not($(this).next()).slideUp();
+					$(this).next().slideToggle();
+				} else {
+					alert("城市：" + $(this).html() + " 编码：" + $(this).attr('cityCode'));
+				}
+			});
+		});
+	</script>
+</html>

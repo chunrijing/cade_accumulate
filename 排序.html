@@ -1,0 +1,41 @@
+<html>
+
+<head>
+
+<title></title>
+<script language="JavaScript" type="text/javascript">
+var n=1233456;
+console.log(typeof(n));
+n = toQfw(n);
+console.log(n)
+console.log(typeof(n))
+function toQfw(){
+  var str_n=n.toString();
+  var result="";
+  var re=/\d{3}$/;
+  while(re.test(str_n)){
+    result=RegExp.lastMatch+result;
+    if(str_n!=RegExp.lastMatch){
+      result=","+result;
+      str_n=RegExp.leftContext; //匹配成功，返回匹配内容左侧的字符信息
+    }
+    else{
+      num="";
+    }
+  }
+  if(str_n){
+    return(str_n+result);
+  }
+}
+</script>
+</head>
+
+<body>
+<!-- 
+<input type="text" value="1212133345.78" 
+onblur="this.value=comdify(this.value)"> -->
+</body>
+
+</html>
+
+ 

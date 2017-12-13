@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+        </style>
+    </head>
+    <body>
+
+
+
+    </body>
+    <script src="jquery-2.2.3.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+        // 给 jQuery($) 拓展方法
+        $.extend({
+            minAndMax: function () {
+                var min = arguments[0];
+                var max = arguments[0];
+                for (var i = 1; i < arguments.length; i++) {
+                    if (min > arguments[i]) {
+                        min = arguments[i];
+                    }
+                    if (max < arguments[i]) {
+                        max = arguments[i];
+                    }
+                }
+                return { min: min, max: max };
+            }
+        });
+
+        console.log($.minAndMax(14, 467, 2345, 541, 456, 35));
+
+
+        // 给JQ元素添加方法
+        $.fn.extend({
+            // 带有fn的extend是给JQ元素添加方法使用的，不能使用$直接调用
+            // 添加的函数，可以用于参数，正常使用
+            // 函数内部的this，就相当于调用该函数的JQ对象(this是JQ对象)
+            addBG: function (color) {
+                this.css({
+                    backgroundColor: color
+                });
+            }
+        });
+
+
+        $('body').addBG('yellow');
+
+        console.log($('body'));
+
+
+
+    </script>
+</html>

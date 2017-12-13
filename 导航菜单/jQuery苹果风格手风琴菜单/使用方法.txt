@@ -1,0 +1,10 @@
+jQuery苹果风格手风琴菜单，简洁流畅, Apple style, 兼容主流浏览器，懒人图库推荐下载！
+
+使用方法：
+1、head区域引用文件 lrtk.css
+2、在文件中加入<!-- 代码 开始 --><!-- 代码 结束 -->区域代码
+3、在页面底部引用jquery-1.2.1.js，jquery.dimensions.js，jquery.accordion.js，appleslide.js
+4、复制images文件夹里的图片到相应的路径
+5、可以修改appleslide.js里event换成click，点击事件触发菜单展开
+
+*更多代码请访问：懒人图库 www.lanrentuku.com/js/

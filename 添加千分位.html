@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		
+		<script>
+			
+			function setName(name){
+			     var newStr ='';
+			     var count = 0;
+			     var str = name+'';
+			     for(var i=str.length-1;i>=0;i--){
+			        if(count % 3 === 0 && count !== 0){
+			            newStr = str.charAt(i) + "," + newStr;
+			        }else{
+			  	    	newStr = str.charAt(i) + newStr;
+			        }
+			        
+			     	count++;
+			     }
+			     str = newStr;
+			     return str;
+			 }
+			 
+			//若为数组
+			var arr = [10000,200,20,3,20000,4000];
+			for(var i = 0;i<arr.length;i++){
+				var index;
+				index = arr[i];
+				console.info(index);
+				setName(index);
+				console.info('chuli',setName(index));
+			}
+		</script>
+	</body>
+</html>

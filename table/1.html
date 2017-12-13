@@ -1,0 +1,35 @@
+
+<!-- <script src="jquery-1.4.4.min.js" type="text/javascript" charset="utf-8"></script> -->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>html 表格导出</title>
+    <style type="text/css" media="screen">
+         #tableExcel tr th{
+            background: #ccc
+        }
+    </style>
+</head>
+<body>
+    <img src="http://pdsdoctest.lubansoft.net/downloadSystemFileUnEncrypt/bd1200c7231e427798ba08d32d3a105c?CA340FF7-D795-4D99-A619-91A115A58003.png" alt="">
+    <img src="http://pdsdoctest.lubansoft.net/downloadSystemFileUnEncrypt/52e821f0cb19432eb0b97bc2d93b626d?35650850-6A0D-472A-BF81-8E258112F840.png" alt="">
+    <img src="imgs/icon-cloud.jpg" alt="">
+</body>
+<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+<script language="JavaScript" type="text/javascript">
+    let obj = {
+        name: 'lijing',
+        sex: 'girl'
+    }
+    // obj = JSON.stringify(obj)
+    let html = '<div>'+
+        '<p onclick="get(obj)">'+'我是'+obj+'</p>'+
+    '</div>'
+    $("body").append(html);
+    function get(objs){
+        console.log("objs",objs)
+    }
+
+</script>
+</html>

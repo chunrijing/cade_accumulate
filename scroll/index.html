@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        #content{width:200px;border:1px solid #ddd;padding:10px;position: relative;}
+        .con{
+        	height: 100%
+        	overflow:auto;
+        }
+        #content h2{
+        	position: absolute;
+        	width: 100%;
+			background: rgb(234,123,145);
+        }
+    </style>
+</head>
+<body>
+<div id="content">
+	<h2>出去吹吹风</h2>
+	<div class="con">
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+		<p>世界那么大，我想去看看</p>
+	</div>
+	
+</div>
+<button type="" onclick="add()">增加</button>
+<button type="" onclick="deleteIs()">删除</button>
+</body>
+<script src="jquery.min.js"></script>
+<script src="jquery.nicescroll.min.js"></script>
+<script>
+function getScrollbarWidths() {
+            var oP = document.createElement('p'),
+                styles = {
+                    width: '100px',
+                    height: '100px'
+                }, i, clientWidth1, clientWidth2, scrollbarWidth;
+            for (i in styles) oP.style[i] = styles[i];
+            document.body.appendChild(oP);
+            clientWidth1 = oP.clientWidth;
+            oP.style.overflowY = 'scroll';
+            clientWidth2 = oP.clientWidth;
+            scrollbarWidth = clientWidth1 - clientWidth2;
+            oP.remove();
+            return scrollbarWidth;
+        }
+        console.log("ss",getScrollbarWidths());
+function getScrollbarWidth() {
+            var oP = document.createElement('p'),
+                styles = {
+                    width: '100px',
+                    height: '100px',
+                    overflowY: 'scroll'
+                }, i, scrollbarWidth;
+            for (i in styles) oP.style[i] = styles[i];
+            document.body.appendChild(oP);
+            scrollbarWidth = oP.offsetWidth - oP.clientWidth;
+            oP.remove();
+            return scrollbarWidth;
+        }
+        // alert(getScrollbarWidth());
+$("#content").css("height",'200px')
+/*$(document).ready(
+  function() { 
+    $('#content').niceScroll({
+        cursorcolor: "red",//滚动条的颜色
+        cursoropacitymax: 1, //滚动条的透明度，从0-1
+        touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+        cursorwidth: "5px", //滚动条的宽度
+        cursorborder: "0", // 游标边框css定义
+        cursorborderradius: "5px",//以像素为光标边界半径  圆角
+        autohidemode: false, //是否隐藏滚动条  true的时候默认不显示滚动条，当鼠标经过的时候显示滚动条
+        zindex:"auto",//给滚动条设置z-index值
+        railpadding: { top:0, right:0, left:0, bottom:0 }//滚动条的位置
+    });
+  }
+);*/
+    /*$('#content').niceScroll({
+        cursorcolor: "red",//滚动条的颜色
+        cursoropacitymax: 1, //滚动条的透明度，从0-1
+        touchbehavior: false, //使光标拖动滚动像在台式电脑触摸设备
+        cursorwidth: "5px", //滚动条的宽度
+        cursorborder: "0", // 游标边框css定义
+        cursorborderradius: "5px",//以像素为光标边界半径  圆角
+        autohidemode: false, //是否隐藏滚动条  true的时候默认不显示滚动条，当鼠标经过的时候显示滚动条
+        zindex:"auto",//给滚动条设置z-index值
+        railpadding: { top:0, right:0, left:0, bottom:0 }//滚动条的位置
+    });*/
+    let count,n=0;
+    function deleteIs(){
+    	count++;
+    	$("#content>p:last-child").remove();
+    	console.log('删除'+count)
+    }
+    function add(){
+    	n++;
+    	let html = `<p>世界那么大，我想去看看</p>`;
+    	$("#content").append(html);
+    	console.log('增加'+n)
+    }
+    // $(".main-container .tbody table").getNiceScroll().resize();
+</script>
+</html>

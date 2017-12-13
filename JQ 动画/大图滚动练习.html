@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.container .wrap img {
+				width: 320px;
+				height: 400px;
+				float: left;
+			}
+			.container {
+				margin: 0 auto;
+				width: 320px;
+				height: 400px;
+				overflow: hidden;
+				margin: 20px auto 10px;
+			}
+			.container .wrap {
+				width: 9999px;
+				height: 400px;
+			}
+			.span {
+				margin: 0 auto;
+				
+				width: 320px;
+				text-align: center;
+			}
+			.span span {
+				
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				border: 1px solid #000;
+				border-radius: 50%;
+				background: #000000;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="wrap">
+				<img src="imgs/img_1.jpg" alt="" />
+				<img src="imgs/img_2.jpg" alt="" />
+				<img src="imgs/img_3.jpg" alt="" />
+				<img src="imgs/img_4.jpg" alt="" />
+				<img src="imgs/img_5.jpg" alt="" />
+				<img src="imgs/img_6.jpg" alt="" />
+			</div>
+		</div>
+		<div class="span">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</body>
+	<script src="jquery-2.2.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function () {
+			var count = $('.container .wrap img').length;
+			var width = $('.container .wrap img').width();
+			var wrap = $('.container .wrap');
+			
+			var index = 0;
+			var timer = null;
+			function startTimer () {
+				timer = setInterval(function () {
+					index++;
+					if (index >= count) {
+						index = 0;
+					}
+				
+				
+				}, 100);
+				
+			}
+			
+			startTimer();
+			
+		});
+		
+		
+	</script>
+</html>

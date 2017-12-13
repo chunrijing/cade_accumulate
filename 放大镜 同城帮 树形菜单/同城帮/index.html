@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="css/reset.css">
+        <style media="screen">
+
+            .container {
+                width: 1200px;
+                margin: 20px auto;
+                position: relative;
+            }
+            .container .brannder {
+
+            }
+            .container .menu {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 1200px;
+            }
+            .container .menu ul {
+                width: 235px;
+                height: 340px;
+            }
+
+            .container .menu ul li {
+                background: url('http://p2.qhmsg.com/t01c035e0988a964a21.png') no-repeat 0 0;
+                border-bottom: 1px solid #9A9895;
+            }
+            .menu li #xsj {
+                background: url('http://p1.qhmsg.com/t01280de86e9d9dc470.png') no-repeat 0 -9px;
+            }
+            .menu li #xdn {
+                background: url('http://p1.qhmsg.com/t01280de86e9d9dc470.png') no-repeat 0 -104px;
+            }
+            .menu li #msj {
+                background: url('http://p1.qhmsg.com/t01280de86e9d9dc470.png') no-repeat 0 -207px;
+            }
+            .menu li #mesj {
+                background: url('http://p1.qhmsg.com/t01280de86e9d9dc470.png') no-repeat 0 -308px;
+            }
+            .container .menu ul li a {
+                color: white;
+                display: block;
+                font-size: 16px;
+                line-height: 84px;
+                padding-left: 95px;
+            }
+
+            .container .menu .cate-list-sub {
+                position: absolute;
+                top: 0;
+                left: 226px;
+                padding-left: 9px;
+            }
+
+            .cate-list-sub .cate-list-sub-inner {
+                background-color: #F7F7F7;
+            }
+            .cate-list-sub .cate-list-sub-inner > div {
+                min-height: 340px;
+                width: 700px;
+                display: none;
+                padding-top: 15px;
+                border: 1px solid gray;
+            }
+            .cate-list-sub .cate-list-sub-inner .sub-xdn {
+                overflow: hidden;
+            }
+            .cate-list-sub .cate-list-sub-inner .sub-xdn .left {
+                font-size: 12px;
+                height: 42px;
+                line-height: 42px;
+                text-align: right;
+                width: 90px;
+                float: left;
+            }
+            .cate-list-sub .cate-list-sub-inner .sub-xdn .right {
+                margin-left: 90px;
+            }
+            .cate-list-sub .cate-list-sub-inner .sub-xdn .right a {
+                border: 1px solid #E1E1E1;
+                color: #333;
+                display: inline-block;
+                font-size: 12px;
+                height: 40px;
+                line-height: 40px;
+                margin-left: 17px;
+                margin-bottom: 20px;
+                text-align: center;
+                width: 116px;
+            }
+
+            .cate-list-sub .cate-list-sub-inner .sub-msj a, .cate-list-sub .cate-list-sub-inner .sub-mesj a {
+                border: 1px solid #E1E1E1;
+                color: #333;
+                display: inline-block;
+                font-size: 12px;
+                height: 40px;
+                line-height: 40px;
+                margin-left: 17px;
+                margin-bottom: 20px;
+                text-align: center;
+                width: 116px;
+            }
+
+            .cate-list-sub .cate-list-sub-inner .sub-xsj {
+
+            }
+            .cate-list-sub .cate-list-sub-inner .sub-xsj > div {
+                overflow: hidden;
+                padding-top: 15px;
+            }
+            .cate-list-sub .cate-list-sub-inner .sub-xsj > div .left {
+                float: left;
+                width: 145px;
+                height: 18px;
+                line-height: 18px;
+                font-size: 12px;
+                text-align: right;
+            }
+            .cate-list-sub .cate-list-sub-inner .sub-xsj > div .left span {
+                line-height: 18px;
+                margin-left: 5px;
+            }
+            .cate-list-sub .cate-list-sub-inner .sub-xsj > div .right {
+                border-bottom: 1px solid #F0F0F0;
+                margin-left: 155px;
+                margin-right: 10px;
+                padding-bottom: 5px;
+            }
+            .cate-list-sub .cate-list-sub-inner .sub-xsj > div .right a {
+                border: 0;
+                border-left: 1px solid #e0e0e0;
+                height: 18px;
+                line-height: 18px;
+                margin-left: 0;
+                margin-bottom: 8px;
+                padding: 0 10px;
+                width: auto;
+                color: #333;
+                display: inline-block;
+                font-size: 12px;
+                text-align: center;
+            }
+
+            /*左边的小箭头*/
+            .cate-list-sub .arrow-left {
+                position: absolute;
+                left: 1px;
+                top: 36px;
+                height: 13px;
+                width: 9px;
+                background: url('http://p4.qhmsg.com/t0145e5f8e7edf2d687.png') no-repeat center;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <!-- 轮播图区域 -->
+            <div class="braner">
+                <div class="content">
+                    <a href="#">
+                        <img src="imgs/item1.jpg" alt="" />
+                    </a>
+                </div>
+                <div class="ctrl">
+                    <span></span>
+                </div>
+            </div>
+
+            <!-- 左侧菜单栏区域 -->
+            <div class="menu">
+                <!-- 菜单列表区域 -->
+                <ul class="cate-list-main">
+                    <li><a href="#" id="xsj">修手机/Pad</a></li>
+                    <li><a href="#" id="xdn">修电脑</a></li>
+                    <li><a href="#" id="msj">卖手机</a></li>
+                    <li><a href="#" id="mesj">买二手机</a></li>
+                </ul>
+
+                <!-- 菜单栏控制显示区域 -->
+                <div class="cate-list-sub">
+                    <div class="cate-list-sub-inner">
+                        <div class="sub-xsj">
+                            <div>
+                                <div class="left">屏幕<span>></span>
+                                </div>
+                                <div class="right">
+                                    <a href="#">屏碎，但现在正常</a>
+                                    <a href="#">屏幕不显示或花屏</a>
+                                    <a href="#">屏幕触摸失灵</a>
+                                    <a href="#">Pad更换屏幕</a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="left">电池/充电/开机<span>></span>
+                                </div>
+                                <div class="right">
+                                    <a href="#">电池问题</a>
+                                    <a href="#">不开机</a>
+                                    <a href="#">充电（连接）问题</a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="left">按键<span>></span>
+                                </div>
+                                <div class="right">
+                                    <a href="#">开关机键失灵</a>
+                                    <a href="#">Home键失灵</a>
+                                    <a href="#">音量键失灵</a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="left">声音/震动<span>></span>
+                                </div>
+                                <div class="right">
+                                    <a href="#">听筒问题</a>
+                                    <a href="#">麦克风问题</a>
+                                    <a href="#">外放扬声器问题</a>
+                                    <a href="#">耳机插口鼓掌</a>
+                                    <a href="#">震动功能失效</a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="left">拍照/录像<span>></span>
+                                </div>
+                                <div class="right">
+                                    <a href="#">后摄像头无法拍照</a>
+                                    <a href="#">前摄像头无法拍照</a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="left">外壳/边框<span>></span>
+                                </div>
+                                <div class="right">
+                                    <a href="#">中框变形</a>
+                                    <a href="#">手机换彩壳</a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="left">进水入液/主板鼓掌<span>></span>
+                                </div>
+                                <div class="right">
+                                    <a href="#">进手入液</a>
+                                    <a href="#">手机主板鼓掌</a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="left">其它鼓掌<span>></span>
+                                </div>
+                                <div class="right">
+                                    <a href="#">软件升级/刷机</a>
+                                    <a href="#">WiFi功能故障</a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="left">个性化服务<span>></span>
+                                </div>
+                                <div class="right">
+                                    <a href="#">点亮iPhone logo</a>
+                                    <a href="#">蓝光护眼钢化膜</a>
+                                    <a href="#">极透高清钢化膜</a>
+                                    <a href="#">爱机深度清洁</a>
+                                    <a href="#">手机换彩壳</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-xdn">
+                            <div>
+                                <div class="left">热门问题：</div>
+                                <div class="right">
+                                    <a href="#">系统重装</a>
+                                    <a href="#">电脑清灰</a>
+                                    <a href="#">数据恢复</a>
+                                    <a href="#">系统故障修复</a>
+                                    <a href="#">驱动安装</a>
+                                    <a href="#">游戏加速</a>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="left">其它问题：</div>
+                                <div class="right">
+                                    <a href="#">开机加速</a>
+                                    <a href="#">网速优化</a>
+                                    <a href="#">蓝屏死机</a>
+                                    <a href="#">电脑没有声音</a>
+                                    <a href="#">路由器调试</a>
+                                    <a href="#">无法上网</a>
+                                    <a href="#">家庭局域网</a>
+                                    <a href="#">更换风扇</a>
+                                    <a href="#">病毒查杀</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sub-msj">
+                            <a href="#">苹果</a>
+                            <a href="#">三星</a>
+                            <a href="#">小米</a>
+                            <a href="#">华为</a>
+                            <a href="#">步步高</a>
+                            <a href="#">OPPO</a>
+                            <a href="#">HTC</a>
+                            <a href="#">魅族</a>
+                            <a href="#">索尼</a>
+                            <a href="#">联想</a>
+                            <a href="#">酷派</a>
+                            <a href="#">中兴</a>
+                            <a href="#">诺基亚</a>
+                            <a href="#">朵唯</a>
+                            <a href="#">乐视</a>
+                            <a href="#">LG</a>
+                            <a href="#">黑莓</a>
+                            <a href="#">TCL</a>
+                            <a href="#">锤子</a>
+                            <a href="#">一加</a>
+                            <a href="#">美图秀秀</a>
+                            <a href="#">微软</a>
+                            <a href="#">金立</a>
+                            <a href="#">360手机</a>
+                            <a href="#">摩托罗拉</a>
+                        </div>
+                        <div class="sub-mesj">
+                            <a href="#">三星</a>
+                            <a href="#">苹果</a>
+                            <a href="#">小米</a>
+                            <a href="#">华为</a>
+                            <a href="#">HTC</a>
+                            <a href="#">酷派</a>
+                            <a href="#">索尼</a>
+                            <a href="#">魅族</a>
+                            <a href="#">联想</a>
+                            <a href="#">努比亚</a>
+                            <a href="#">LG</a>
+                            <a href="#">vivo</a>
+                            <a href="#">oppo</a>
+                            <a href="#">乐视</a>
+                            <a href="#">360手机</a>
+                            <a href="#">美图秀秀</a>
+                            <a href="#">微软</a>
+                            <a href="#">黑莓</a>
+                            <a href="#">戴尔</a>
+                        </div>
+                    </div>
+                    <!-- 移动的小三角块 -->
+                    <span class="arrow-left"></span>
+                </div>
+            </div>
+
+
+        </div>
+
+    </body>
+    <script src="js/jquery-2.2.3.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            // 绑定事件
+            $('.container .menu .cate-list-main li').on('mouseover', function () {
+                console.log($(this).index());
+                var top = 36;
+                switch ($(this).index()) {
+                    case 0: top = 36; break;
+                    case 1: top = 121; break;
+                    case 2: top = 206; break;
+                    case 3: top = 291; break;
+                }
+                // 移动小箭头的位置
+                $('.cate-list-sub .arrow-left').show().css({
+                    top: top
+                });
+                // 隐藏所有的区域块，显示当前的
+                $('.container .cate-list-sub .cate-list-sub-inner > div').hide().eq($(this).index()).show();
+                console.log(divs);
+            });
+            $('.container .menu .cate-list-main li, .container .cate-list-sub, cate-list-sub-inner').on('mouseout', function () {
+                $('.cate-list-sub .arrow-left').hide();
+                $('.container .cate-list-sub .cate-list-sub-inner > div').hide();
+            });
+        });
+
+    </script>
+</html>

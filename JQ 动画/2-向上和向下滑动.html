@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            .div1 {
+                width: 100px;
+                height: 100px;
+                background-color: cyan;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="div1">
+
+        </div>
+
+    </body>
+    <script src="jquery-2.2.3.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+        $(document).click(function () {
+
+            // 向上滑动，隐藏元素
+            // $('.div1').slideUp(500, function () {
+            //
+            //     // 向下滑动，显示元素
+            //     $(this).slideDown(500);
+            // });
+
+            // 切换向上和向下滑动
+            $('.div1').slideToggle(1000, function () {
+                console.log("动画完成");
+            });
+
+
+        });
+
+    </script>
+</html>
